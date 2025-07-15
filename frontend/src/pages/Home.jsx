@@ -1,5 +1,11 @@
 import React from 'react'
 import BottomNav from "../components/shared/BottomNav";
+import Greetings from '../components/home/Greetings';
+import { BsCashCoin } from "react-icons/bs";
+import { GrInProgress } from "react-icons/gr";
+import MiniCard from '../components/home/MiniCard';
+import RecentOrders from "../components/home/RecentOrders";
+
 
 const Home = () => {
     return (
@@ -7,12 +13,12 @@ const Home = () => {
 
             {/* Left Div */}
             <div className="flex-[3] bg-red-400">
-                {/* <Greetings /> */}
-                {/* <div className="flex items-center w-full gap-3 px-8 mt-8">
+                <Greetings />
+                <div className="flex items-center w-full gap-3 px-8 mt-8">
                     <MiniCard title="Total Earnings" icon={<BsCashCoin />} number={512} footerNum={1.6} />
                     <MiniCard title="In Progress" icon={<GrInProgress />} number={16} footerNum={3.6} />
-                </div> */}
-                {/* <RecentOrders /> */}
+                </div>
+                <RecentOrders />
             </div>
 
 
