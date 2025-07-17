@@ -3,9 +3,9 @@ import BottomNav from "../components/shared/BottomNav";
 import BackButton from "../components/shared/BackButton";
 import { MdRestaurantMenu } from "react-icons/md";
 import MenuContainer from "../components/menu/MenuContainer";
-// import CustomerInfo from "../components/menu/CustomerInfo";
-// import CartInfo from "../components/menu/CartInfo";
-// import Bill from "../components/menu/Bill";
+import CustomerInfo from "../components/menu/CustomerInfo";
+import CartInfo from "../components/menu/CartInfo";
+import Bill from "../components/menu/Bill";
 import { useSelector } from "react-redux";
 
 const Menu = () => {
@@ -50,13 +50,13 @@ const Menu = () => {
       {/* Right Div */}
       <div className="flex-[1] bg-[#1a1a1a] mt-4 mr-3 h-[780px] rounded-lg pt-2">
         {/* Customer Info */}
-        {/* <CustomerInfo /> */}
+        <CustomerInfo />
         <hr className="border-[#2a2a2a] border-t-2" />
         {/* Cart Items */}
-        {/* <CartInfo /> */}
+        <CartInfo />
         <hr className="border-[#2a2a2a] border-t-2" />
         {/* Bills */}
-        {/* <Bill /> */}
+        <Bill />
       </div>
 
       <BottomNav />
