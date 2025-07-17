@@ -1,10 +1,10 @@
 const express = require("express");
 const connectDB = require("./config/database");
 const config = require("./config/config");
-// const globalErrorHandler = require("./middlewares/globalErrorHandler");
+const globalErrorHandler = require("./middlewares/globalErrorHandler");
 // const cookieParser = require("cookie-parser");
 // const cors = require("cors");
-
+// const createHttpError = require("http-errors");
 
 const app = express();
 const PORT = config.port;
@@ -21,6 +21,9 @@ connectDB();
 
 // Root Endpoint
 app.get("/", (req,res) => {
+
+    // const err = createHttpError(404,"PAge NOt Found");
+    // throw err;
     res.json({message : "Hello from POS Server!"});
 })
 
@@ -31,7 +34,7 @@ app.get("/", (req,res) => {
 // app.use("/api/payment", require("./routes/paymentRoute"));
 
 // Global Error Handler
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 
 
 // Server
