@@ -2,12 +2,13 @@ const express = require("express");
 const connectDB = require("./config/database");
 const config = require("./config/config");
 const globalErrorHandler = require("./middlewares/globalErrorHandler");
-// const cookieParser = require("cookie-parser");
-// const cors = require("cors");
-// const createHttpError = require("http-errors");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const createHttpError = require("http-errors");
 
 const app = express();
 const PORT = config.port;
+
 connectDB();
 
 // Middlewares
@@ -15,20 +16,20 @@ connectDB();
 //     credentials: true,
 //     origin: ['http://localhost:5173']
 // }))
-// app.use(express.json()); // parse incoming request in json format
-// app.use(cookieParser())
+app.use(cors()); // Enable CORS for all origins
+app.use(express.json()); // parse incoming request in json format
+app.use(cookieParser())
 
 
 // Root Endpoint
 app.get("/", (req,res) => {
-
     // const err = createHttpError(404,"PAge NOt Found");
     // throw err;
     res.json({message : "Hello from POS Server!"});
 })
 
 // Other Endpoints
-// app.use("/api/user", require("./routes/userRoute"));
+app.use("/api/user", require("./routes/userRoute"));
 // app.use("/api/order", require("./routes/orderRoute"));
 // app.use("/api/table", require("./routes/tableRoute"));
 // app.use("/api/payment", require("./routes/paymentRoute"));
