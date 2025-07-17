@@ -1,20 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getAvatarName, getBgColor } from "../../utils"
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import { updateTable } from "../../redux/slices/customerSlice";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 const TableCard = ({ id, name, status, initials, seats }) => {
-    //   const dispatch = useDispatch();
-    //   const navigate = useNavigate();
-    //   const handleClick = (name) => {
-    //     if(status === "Booked") return;
+      const dispatch = useDispatch();
+      const navigate = useNavigate();
+      const handleClick = (name) => {
+        if(status === "Booked") return;
 
-    //     const table = { tableId: id, tableNo: name }
-    //     dispatch(updateTable({table}))
-    //     navigate(`/menu`);
-    //   };
+        const table = { tableId: id, tableNo: name }
+        // dispatch(updateTable({table}))
+        navigate(`/menu`);
+      };
 
     return (
         <div onClick={() => handleClick(name)} key={id} className="w-[300px] hover:bg-[#2c2c2c] bg-[#262626] p-4 rounded-lg cursor-pointer">
