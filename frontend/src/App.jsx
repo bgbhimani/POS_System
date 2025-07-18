@@ -1,10 +1,16 @@
-
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate, } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { Home, Auth, Orders, Tables, Menu, Dashboard } from "./pages";
 import Header from "./components/shared/Header";
 import { useSelector } from "react-redux";
 import useLoadData from "./hooks/useLoadData";
 import FullScreenLoader from "./components/shared/FullScreenLoader"
+
 function Layout() {
   const isLoading = useLoadData();
   const location = useLocation();
@@ -34,7 +40,14 @@ function Layout() {
             </ProtectedRoutes>
           }
         />
-       
+        <Route
+          path="/tables"
+          element={
+            <ProtectedRoutes>
+              <Tables />
+            </ProtectedRoutes>
+          }
+        />
         <Route
           path="/menu"
           element={
