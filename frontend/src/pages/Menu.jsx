@@ -46,7 +46,7 @@ const Menu = () => {
       </div>
 
 
-
+      
       {/* Right Div */}
       <div className="flex-[1] bg-[#1a1a1a] mt-4 mr-3 h-[780px] rounded-lg pt-2">
         {/* Customer Info */}

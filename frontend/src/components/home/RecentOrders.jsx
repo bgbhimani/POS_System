@@ -1,27 +1,25 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
 import OrderList from "./OrderList";
-// import { keepPreviousData, useQuery } from "@tanstack/react-query";
-// import { enqueueSnackbar } from "notistack";
-// import { getOrders } from "../../https/index";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { enqueueSnackbar } from "notistack";
+import { getOrders } from "../../https/index";
 
 const RecentOrders = () => {
-  // const { data: resData, isError } = useQuery({
-  //   queryKey: ["orders"],
-  //   queryFn: async () => {
-  //     return await getOrders();
-  //   },
-  //   placeholderData: keepPreviousData,
-  // });
+  const { data: resData, isError } = useQuery({
+    queryKey: ["orders"],
+    queryFn: async () => {
+      return await getOrders();
+    },
+    placeholderData: keepPreviousData,
+  });
 
-  // if (isError) {
-  //   enqueueSnackbar("Something went wrong!", { variant: "error" });
-  // }
+  if (isError) {
+    enqueueSnackbar("Something went wrong!", { variant: "error" });
+  }
 
   return (
     <div className="px-8 mt-6">
-
-
       <div className="bg-[#1a1a1a] w-full h-[450px] rounded-lg">
         <div className="flex justify-between items-center px-6 py-4">
           <h1 className="text-[#f5f5f5] text-lg font-semibold tracking-wide">
@@ -42,27 +40,16 @@ const RecentOrders = () => {
         </div>
 
         {/* Order list */}
-        <div className="mt-4 px-6 overflow-y-scroll h-[300px] scrollbar-hide overflow-auto [&::-webkit-scrollbar:hidden] [-ms-overflow-style:none] [scrollbar-width:none]">
-          {/* {resData?.data.data.length > 0 ? (
+        <div className="mt-4 px-6 overflow-y-scroll h-[300px] scrollbar-hide">
+          {resData?.data.data.length > 0 ? (
             resData.data.data.map((order) => {
-              return <OrderList key={order._id} order={order} />;
+              return <OrderList key={order._id} orderKey={order.id} order={order} />;
             })
           ) : (
             <p className="col-span-3 text-gray-500">No orders available</p>
-          )} */}
-
-          <OrderList />
-          <OrderList />
-          <OrderList />
-          <OrderList />
-          <OrderList />
-          <OrderList />
-          <OrderList />
-          <OrderList />
-          <OrderList />
-          <OrderList />
-          <OrderList />
+          )}
         </div>
+
 
       </div>
     </div>

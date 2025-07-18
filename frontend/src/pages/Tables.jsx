@@ -4,7 +4,7 @@ import BackButton from "../components/shared/BackButton";
 import TableCard from "../components/tables/TableCard";
 import { tables } from "../constants";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-// import { getTables } from "../https";
+import { getTables } from "../https";
 
 const Tables = () => {
   const [status, setStatus] = useState("all");
@@ -13,19 +13,19 @@ const Tables = () => {
       document.title = "POS | Tables"
     }, [])
 
-//   const { data: resData, isError } = useQuery({
-//     queryKey: ["tables"],
-//     queryFn: async () => {
-//       return await getTables();
-//     },
-//     placeholderData: keepPreviousData,
-//   });
+  const { data: resData, isError } = useQuery({
+    queryKey: ["tables"],
+    queryFn: async () => {
+      return await getTables();
+    },
+    placeholderData: keepPreviousData,
+  });
 
-//   if(isError) {
-//     enqueueSnackbar("Something went wrong!", { variant: "error" })
-//   }
+  if(isError) {
+    enqueueSnackbar("Something went wrong!", { variant: "error" })
+  }
 
-//   console.log(resData);
+  console.log(resData);
 
   return (
     <section className="bg-[#1f1f1f]  h-[calc(100vh-5rem)] overflow-hidden">
@@ -56,7 +56,7 @@ const Tables = () => {
         </div>
       </div>
 
-      {/* <div className="grid grid-cols-5 gap-3 px-16 py-4 h-[650px] overflow-y-scroll scrollbar-hide">
+      <div className="grid grid-cols-5 gap-3 px-16 py-4 h-[650px] overflow-y-scroll scrollbar-hide">
         {resData?.data.data.map((table) => {
           return (
             <TableCard
@@ -68,18 +68,6 @@ const Tables = () => {
             />
           );
         })}
-      </div> */}
-      
-      
-      <div className="grid grid-cols-5 gap-3 px-16 py-4 h-[650px] overflow-y-scroll scrollbar-hide">
-            <TableCard/>
-            <TableCard/>
-            <TableCard/>
-            <TableCard/>
-            <TableCard/>
-            <TableCard/>
-            <TableCard/>
-            <TableCard/>
       </div>
 
       <BottomNav />
